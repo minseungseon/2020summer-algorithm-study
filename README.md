@@ -1,2 +1,13 @@
 # 2020summer-algorithm-study
-algorithm study repository 
+>> 2020년 여름을 불태울 알고르짐 스터디 레포 입니다!  
+>> 알고리즘이 처음이지만 두달 후에는 많이 발전해있을 우리의 미래를 위해..!!  
+
+## 스터디 일정  
+**매주 월요일** 입니다!  
+
+## 스터디 멤버  
+| **Name** |**Github ID**|**Email**|
+|:--------:|:-----------:|:-------:|
+|선민승|minseungseon|seonminseung@naver.com|
+|임정택|||
+|오지영|||
