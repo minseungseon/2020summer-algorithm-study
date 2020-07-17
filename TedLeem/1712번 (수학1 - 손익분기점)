@@ -1,0 +1,32 @@
+수학 1 - 분기점
+========================
+## 핵심 구현사항
+먼저 손익분기점의 정의는  최초로 총 수입이 총 비용보다 많아져 이익이 발생하는 지점이다.
+최초로 이익이 발생하는 판매된 노트북 수를 N이라 하고, A는 고정비용 , B는 가변비용 C는 노트북가격이라 하겠다. (이때 A B C 가 입력값이다)
+그러면 손익분기점을 구하는 수식은 다음과 같다.
+
+> N x C > A + (B x N)  , 즉 N > A/(C-B) 를 만족하는 N을 구하면된다. 
+이제 코드를 보겠다.
+
+## 코드 
+  public class BreakEvenPoint {
+
+	public static void main(String[] args) {
+		int A,B,C,N,numOfCom;
+		Scanner scanner = new Scanner(System.in);
+		A=scanner.nextInt();
+		B= scanner.nextInt();
+		C= scanner.nextInt();
+		N=A/(C-B);
+		numOfCom=1;
+		while(numOfCom<=N) {
+			numOfCom++;
+		}
+		System.out.println(numOfCom);
+	 }
+  }
+
+
+## 다른 방법 
+인터넷에 완전 무식한 방법이 있었다. x=1이라 하고 처음부터 1씩 증가하면서 손익분기점이 생기면 그때 반복문을 탈출하도록 하는 방법이 있었다.
+또,  판매비용(C)이 제작비용(B)보다 같거나 작으면 절대로 손익분기점을 넘을 수 없다.( 이 부분은 코드에 추가하지 못하였다... 하지만 추가해줘야한다..)
