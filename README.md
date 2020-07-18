@@ -28,5 +28,5 @@
 | **Name** |**Github ID**|**Email**|
 |:--------:|:-----------:|:-------:|
 |선민승|minseungseon|seonminseung@naver.com|
-|임정택|||
+|임정택|TedLeem|wjdxor6346@naver.com|
 |오지영|||
