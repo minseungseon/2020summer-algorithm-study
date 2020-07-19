@@ -1,0 +1,33 @@
+# 피보나치수 
+## 핵심 구현 사항
+F(n) = F(n-1) + F(n-2) 의 수식을 재귀로 표현하면 된다. 
+나는 재귀로 구현한 코드와 반복문으로 구현한 코드를 제시하겠다.(근데 난 사실 반복문으로 표현하는게 더 어려운 것 같다..)
+재귀는 반드시 함수를 더 이상 call하지 않는 __종료 조건__이 필요하다.
+여기서 종료조건은 
+>   n이 1일때 n이 0일 때, 즉 n<=1 일때이다.
+
+이때 return n을 하고 그 외는 위의 함수를 그대로 call 하면 된다.
+## 코드
+### 재귀 코드
+  import java.util.Scanner;
+
+public class Recursive {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		System.out.println(fibonacci(num));
+	}
+	
+	static int fibonacci(int n) {
+		if(n == 0) return 0;
+		else if(n==1) return 1;
+		else {
+			return fibonacci(n-1) + fibonacci(n-2);
+		}
+	}
+	
+}
+
+==================================
+반복문 코드 
+
