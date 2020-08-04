@@ -31,3 +31,7 @@
 |임정택|TedLeem|wjdxor6346@naver.com|
 |오지영|ohjeeyoung|jeeyoung990725@naver.com|
 |김승아|seungahkim|safg0421@gmail.com|
+
+
+## 스터디 추가 사항  
+- 너무
