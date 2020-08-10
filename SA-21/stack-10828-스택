@@ -1,0 +1,72 @@
+## 문제
+https://www.acmicpc.net/problem/10828
+
+**첫 번째 입력** : N, 명령의 수
+**나머지 입력, N** : N개의 명령이 한 줄씩
+
+**출력** : 출력해야하는 명령이 주어질 때만 출력
+
+## 접근 방법
+stack STL이 있지 않을까?
+시간 제한이 0.5초이고 정답률이 매우 낮은데...
+
+그래도 스택을 구현해보자!
+
+strcmp를 이용해서 명령어의 값이 일치하면 0을 반환하여  if, else if, .... 하려다가 비효율적으로 느껴졌다.
+
+혹시 c보다 만능인 c++ 이라면 switch문에 문자열로 비교가 가능하지 않을까...?하고 알아봤는데 역시 ㄱㄴㄱㄴ
+`해시함수`를 이용하면 가능하다.
+사실 switch 문 자체로 문자열 비교는 불가능하지만 해시함수를 사용하여 임의의 길이의 데이터를 고정된 길이의 데이터로 매핑할 수 있다.
+
+근데 알아보다보니 그냥 strcmp로 비교하는 if문이 현재로써 적합하다는 결론을 내렸다... ㅎ
+
+## 나의 답안
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int stack[10001], top = -1;
+
+void push(int x) {
+    stack[++top] = x;
+}
+bool empty() {
+    if (top < 0) return true;
+    else return false;
+}
+void pop() {
+    if (empty() == 1)cout << "-1" << "\n";
+    else {
+        cout << stack[top] << "\n";
+        stack[top--] = 0;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        char str[10];
+        cin >> str;
+        if (!strcmp(str, "push")) {
+            int x; cin >> x;
+            push(x);
+        }
+        else if (!strcmp(str, "pop")) {
+            pop();
+        }
+        else if (!strcmp(str, "size")) {
+            cout << top + 1 << "\n";
+        }
+        else if (!strcmp(str, "empty")) {
+            cout << empty() << "\n";
+        }
+        else { //top
+            if (empty() == 1)cout << "-1" << "\n";
+            else cout << stack[top] << "\n";
+        }
+    }
+    return 0;
+}
+```
