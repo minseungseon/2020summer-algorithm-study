@@ -1,0 +1,74 @@
+통계학
+=================================================================
+
+### 문제
+https://www.acmicpc.net/problem/2108
+
+### 코드
+
+``` python
+# 정렬 - 통계학
+
+import sys 
+from collections import Counter
+
+N = int(sys.stdin.readline())   # 수의 개수
+L = []  # 수를 담는 빈 리스트
+
+for _ in range(N):
+    L.append(int(sys.stdin.readline()))
+
+L.sort()    # L 정렬
+
+# 산술평균
+average = sum(L)/N
+print(round(average))
+
+# 중간값
+mid_num = L[N//2]
+print(mid_num)
+
+# 최빈값
+cnt = Counter(L).most_common()
+if N == 1:
+    print(L[0])
+
+else:
+    if(cnt[0][1] != cnt[1][1]):
+        print(cnt[0][0])
+    else:
+        print(cnt[1][0])
+
+# 범위
+boundary = L[N-1] - L[0]
+print(boundary)
+```
+### 풀이
+1. 
+1. 첫째 줄에 계산하려는 수의 개수 N을 sys.stdin.readline()을 통해 입력 받는다.
+2. for문을 통해 N개 만큼의 수를 입력 받아 빈리스트 L에 append 한다.
+3. (산술평균) 평균공식 = 자료의 합 / 자료의 개수
+    sum 메소드를 사용해 average를 구하고 소수 첫째자리에서 반올림 해야하므로 round 함수를 이용했다.
+> round 함수는 뒤에 round(3.56,1) 기본적으로 2개의 인자를 받는데 두번째 인자가 생략되면 소수 첫째자리에서 반올림하고, 앞의 예시처럼 1로 적히면 소수 둘째자리에서 반올림해 첫째자리까지 나타내준다.
+4. (중간값) 정렬된 리스트에서 index가 N//2 인 수가 중간값이다. -> 첫번째 index가 0부터 시작해서 가능한 일
+5. (최빈값) from collections import Counter를 통해 Counter를 사용하면 리스트의 자료들은 {(자료값:빈도)}로 자료들이 사용된 횟수를 dictionary형으로 반환해주는 내장함수이다. 또한 Counter 클래스에 내장된
+most_common()함수는 최빈값을 빈도 내림차순으로 정렬해준다.
+> if문을 통해 자료 수가 1이면 그 수가 바로 최빈값이므로 L[0] 출력
+
+> 그 외의 경우 다시 if문을 통해 최빈값이 여러개 있을 때와 아닐때를 나누고 최빈값이 여러개가 없을 때는 가장 빈도수가 높은 맨 앞의 cnt[0][0]을 출력하면 되고, 최빈값이 여러개일 때는 두번째로 작은 값을 출력하므로
+cnt[1][0]을 출력하면 된다.
+
+6. (범위) 정렬된 리스트에서 가장 큰 값에서 가장 작은 값을 뺀 것이 범위에 해당한다.
+7. 위의 통계값을 모두 출력해준다.
+
+### 추가
+사실 이 문제는 수학 공식만 알면 코딩으로 푸는게 어렵진 않다.
+그럼에도 시간초과가 났던건 input이 생각보다 용량이 큰 것 같다. sys.stdin.readline() 을 사용하면 시간초과가 나지 않았다.
+
+이번 문제를 풀면서 알게 된건 최빈값을 찾아주는 메소드가 있다는 사실! 두둥
+
+collections 패키지에 정의된 Counter에 관련된 메소드들을 추가로 적어보려한다.
+
+<Counter의 method>
+1) Counter(): dictionary형으로 {자료값:빈도수}를 구해준다.
+2) most_common(): 최빈값을 빈도 내림차순으로 정렬해준다.
