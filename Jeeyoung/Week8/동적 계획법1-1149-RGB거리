@@ -1,0 +1,64 @@
+1로 만들기
+=======================================================
+동적 계획법(Dynamic Programming)
+-------------------------------------------------------
+> 전체 문제를 작은 문제로 단순화한 다음 점화식으로 만들어 재귀적인 구조를 활용해서 전체 문제를 해결하는 방식이다.
+
+1. examples(guessing)
+- Establish a recursive property from the problem
+- Identify(Find out, Derive) a recurrence equation from P.
+- 큰 문제 = 작은 문제 +/* 작은문제 + ... + 작은문제
+2. recursive property = recurrence (math. expression)
+- Solve in a bottom-up fashion programming.
+- Solve smaller problems first (easy problem first)
+- Save them(smaller problems) in arrays(tables, dict..., )
+- Use them later. (from look-up tables)
+3. save/reuse
+
+> Time Complexity(시간복잡도): # cell computations = # subproblems * time/sub.
+
+### 문제
+https://www.acmicpc.net/problem/1149
+
+### 코드
+
+``` python
+#동적 계획법1-RGB거리#
+
+N = int(input())
+
+price = []
+for i in range(N):
+    price.append(list(map(int, input().split())))
+
+matrix = [[1001]*3 for i in range(N)]
+
+for i in range(N):
+    if i == 0:
+        matrix[i] = price[i]
+    else:
+        matrix[i][0] = price[i][0] + min(matrix[i-1][1], matrix[i-1][2])
+        matrix[i][1] = price[i][1] + min(matrix[i-1][0], matrix[i-1][2])
+        matrix[i][2] = price[i][2] + min(matrix[i-1][0], matrix[i-1][1])
+
+print(min(matrix[N-1][0], matrix[N-1][1], matrix[N-1][2]))
+```
+
+### 풀이
+1. 첫째 줄에 집의 수 N을 int형으로 input 받는다.
+2. 빈 price 리스트에 각 집을 RGB색으로 색칠하는데 드는 비용을 띄어쓰기를 기준으로 input 받는다.
+> map 함수를 이용해 int형으로 띄어쓰기로 구분하여 받았다.
+
+3. 색은 총 3가지 존재하므로 matrix 리스트를 1001로 3*N만큼 초기화시켜준다.(이중리스트)
+4. for문을 돌면서 최소 가격으로 matrix 리스트를 갱신을 해준다. 단 이때, i번째 집을 색칠한 색깔과 i-1, i+1 집을 칠한 색깔과 같으면 안된다.
+> base case: i가 0일 때 처음 집에는 다른 집들의 색을 고려할 필요가 없으므로 matrix 리스트에 price 리스트에 적힌 값을 넣어준다.
+
+> 그 외의 경우 matrix의 값은 price에 적힌 값과 그 이전 집의 최소 비용을 더한 것과 같다.
+5. 가장 마지막 N-1번 index에 집을 색칠한 총 비용이 담기므로 그 중에서 가장 작은 값을 출력해준다.
+
+
+### 추가
+
+dp는 이론만 쉽고.. 생각하기엔 너무 헷갈린다...:(
+많이 안풀어봐서 그런거겠지만ㅎ 이중리스트라 헷갈려서 삽질을 좀 오래했는데 풀고 보면 너무 어려운 문제는 아니었던 것 같다.
+다른 사람들 코드도 찾아봤는데 대부분 나와 똑같이 풀었다.
