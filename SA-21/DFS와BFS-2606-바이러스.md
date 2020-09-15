@@ -1,20 +1,63 @@
 ## 문제
 https://www.acmicpc.net/problem/2606
 
-### 입력: 컴퓨터의 수 n
-### 입력: 연결되어 있는 컴퓨터 쌍의 수
-### 입력: 연결되어 있는 컴퓨터의 번호 쌍
-### 출력: 1번 감염-> 감염되는 컴퓨터의 수
+**입력**: 컴퓨터의 수 n
+**입력**: 연결되어 있는 컴퓨터 쌍의 수
+**입력**: 연결되어 있는 컴퓨터의 번호 쌍
+**출력**: 1번 감염-> 감염되는 컴퓨터의 수
 
-### 접근방법1: 틀렸습니다.
-- virus[]: 1은 감염,0은 비감염
-- 쌍의 시작이 1이 아닐 수 있다.
-#### BFS와 DFS 설명한 블로그
+#### BFS와 DFS 잘 설명되어있는 블로그
 https://yunyoung1819.tistory.com/86
-- DFS로 해봐야겠다.
 
 <br>
 
+## 나의 답안
+### 접근방법
+- DFS
+
+### 코드
+```
+#include <iostream>
+#include <vector>
+using namespace std;
+int result = 0;
+vector<vector<int>> network;
+bool visited[101] = { false };
+void dfs(int cur)
+{
+	visited[cur] = true;
+	for (int i = 0; i < network[cur].size(); i++) {
+		if (visited[network[cur][i]] == false) {
+			dfs(network[cur][i]);
+			result++;
+		}
+	}
+}
+int main()
+{
+	int comN, netN, a, b;
+	cin >> comN >> netN;
+	network.resize(comN + 1);
+	while (netN--) {
+		cin >> a >> b;
+		network[a].push_back(b);
+		network[b].push_back(a);
+	}
+	dfs(1);
+	cout << result;
+	return 0;
+}
+```
+
+<br>
+
+## 시도1: 틀렸습니다.
+### 접근방법
+- virus[]: 1은 감염,0은 비감염
+- 쌍의 시작이 1이 아닐 수 있다.
+- BFS로 해봐야겠다.
+
+### 코드
 ```
 #include <iostream>
 #include <queue>
