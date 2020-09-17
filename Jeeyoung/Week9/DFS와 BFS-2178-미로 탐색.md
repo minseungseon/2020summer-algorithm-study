@@ -38,10 +38,7 @@ while queue:
         nx = x + dx[i]
         ny = y + dy[i]
         
-        if nx < 0 or nx >= N or ny < 0 or ny >= M:
-            continue
-
-        if maze[nx][ny] == 1 and visited[nx][ny] == 0:
+        if (0 <= nx < N) and (0 <= ny < M ) and maze[nx][ny] == 1 and visited[nx][ny] == 0:
             visited[nx][ny] = visited[x][y] + 1
             queue.append([nx, ny])
 
