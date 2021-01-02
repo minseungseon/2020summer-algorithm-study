@@ -60,6 +60,8 @@ hit = 1time, miss = 5time 실행시간이 걸린다.
 https://twpower.github.io/116-hash-table-string-key-hash-function    
 https://stackoverflow.com/questions/8317508/hash-function-for-a-string    
 해쉬 정말 중요한 것같다.. 나중에 공부해봐야겠따.    
+파이썬은 아래와 같이 OrderedDictionary를 이용하여 LRUcache알고리즘을 구현하면 내가 구현하려하는 것과 동일한 알고리즘을 구현할 수 있는 것 같다. 단지 여기서 key랑 value모두 그냥 문자열을 사용해도 좋고 아니면 key값을 위의 링크에서 문자열 해쉬함수만드는 걸로 key를 설정해서 사용해도 될 것 같다.    
+
 ``` python3 
 from collections import OrderedDict
  
