@@ -72,3 +72,5 @@ if(++value<=N) recur(brr,length,index,value);
 ```java
 recur(brr,length+1,index+1,value+1);
 ```
+진짜 오지게 헷갈린다 재귀....    
+지금 계쏙 이문제를 해결을 못하고있따.. 뭔가 거의 될 것같은데 안되고있다......후
